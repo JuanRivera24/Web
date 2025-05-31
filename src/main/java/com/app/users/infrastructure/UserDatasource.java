@@ -20,6 +20,7 @@ public class UserDatasource {
     public List<User> findAll() {
         return userRepository.findAll();
     }
+    
     public Optional<User> findById(Long id) {
         return userRepository.findById(id);
     }
@@ -31,7 +32,10 @@ public class UserDatasource {
     public Optional<User> update(User user, Long id) {
         return userRepository.findById(id).map(existingUser -> {
             existingUser.setName(user.getName());
+            existingUser.setLastname(user.getLastname());  // agregado
             existingUser.setEmail(user.getEmail());
+            existingUser.setPhone(user.getPhone());        // agregado
+            existingUser.setRole(user.getRole());          // agregado
             return userRepository.save(existingUser);
         });
     }

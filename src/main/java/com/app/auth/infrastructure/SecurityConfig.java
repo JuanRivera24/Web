@@ -17,9 +17,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import lombok.RequiredArgsConstructor;
+import com.app.Original.application.UserDetailsServiceImpl;
 
-import com.app.users.application.UserDetailsServiceImpl;
+import lombok.RequiredArgsConstructor;
 
 @Configuration
 @EnableWebSecurity

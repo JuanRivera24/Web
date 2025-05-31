@@ -18,35 +18,37 @@ public class UserController {
         this.userService = userService;
     }
 
-    // all users
+    // Obtener todos los usuarios (Clientes y Barberos)
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.findAll();
         return ResponseEntity.ok(users);
     }
 
-    // user by id
+    // Obtener un usuario por su ID
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
         User user = userService.findById(id);
         return ResponseEntity.ok(user);
     }
 
-    // create user
+    // Crear un nuevo usuario
+    // Se espera un objeto con atributos como:
+    // FullName, Email, PhoneNumber, UserType, JoinDate, Notes, PreferredBarberId, HireDate, Specialization, Bio, ProfileImage
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
         User newUser = userService.save(user);
         return ResponseEntity.ok(newUser);
     }
 
-    // update user
+    // Actualizar un usuario existente por ID
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
         User updatedUser = userService.update(user, id);
         return ResponseEntity.ok(updatedUser);
     }
 
-    // delete user
+    // Eliminar un usuario por su ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userService.deleteById(id);

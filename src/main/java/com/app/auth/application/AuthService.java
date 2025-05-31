@@ -11,14 +11,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.Original.domain.IUserRepository;
+import com.app.Original.domain.User;
 import com.app.auth.domain.IJwtTokenRepository;
 import com.app.auth.domain.JwtToken;
 import com.app.auth.infrastructure.JwtUtils;
 import com.app.auth.infrastructure.dto.AuthResponse;
 import com.app.auth.infrastructure.dto.ProfileResponse;
 import com.app.auth.infrastructure.dto.RegisterRequest;
-import com.app.users.domain.IUserRepository;
-import com.app.users.domain.User;
 
 import lombok.RequiredArgsConstructor;
 

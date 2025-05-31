@@ -14,24 +14,36 @@ public class User {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
+    private String lastname;  // nuevo campo
+
     @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
     private String password;
 
-    // Empty constructor (required for JPA)
+    private String phone;  // nuevo campo
+
+    @Enumerated(EnumType.STRING)
+    private ERole role;    // nuevo campo
+
+    // Constructor vacío para JPA
     public User() {}
 
-    // Constructor with parameters
-    public User(Long id, String name, String email, String password) {
+    // Constructor con todos los parámetros
+    public User(Long id, String name, String lastname, String email, String password, String phone, ERole role) {
         this.id = id;
         this.name = name;
+        this.lastname = lastname;
         this.email = email;
         this.password = password;
+        this.phone = phone;
+        this.role = role;
     }
 
     // Getters y Setters
+
     public Long getId() {
         return id;
     }
@@ -48,6 +60,14 @@ public class User {
         this.name = name;
     }
 
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -57,10 +77,26 @@ public class User {
     }
 
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public ERole getRole() {
+        return role;
+    }
+
+    public void setRole(ERole role) {
+        this.role = role;
     }
 }

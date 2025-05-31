@@ -35,8 +35,9 @@ public class UserService implements IUserService {
     @Transactional
     public User save(User user) {
         if (userRepository.existsByEmail(user.getEmail())) {
-            throw new IllegalArgumentException("email registred: " + user.getEmail());
+            throw new IllegalArgumentException("email registered: " + user.getEmail());
         }
+        // Aquí podrías agregar validaciones para otros campos si quieres
         return userRepository.save(user);
     }
 
@@ -45,7 +46,11 @@ public class UserService implements IUserService {
     public User update(User user, Long id) {
         User existingUser = findById(id);
         existingUser.setName(user.getName());
+        existingUser.setLastname(user.getLastname());  // agregar atributo
         existingUser.setEmail(user.getEmail());
+        existingUser.setPhone(user.getPhone());        // agregar atributo
+        existingUser.setRole(user.getRole());          // agregar atributo
+        // Agrega más campos según tu tabla users si es necesario
         return userRepository.save(existingUser);
     }
 
